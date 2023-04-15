@@ -5,8 +5,8 @@
 #         self.left = left
 #         self.right = right
 class Solution:
-def preorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
-        if root == None:
-            return []
+    def maxDepth(self, root: Optional[TreeNode]) -> int:
+        if root==None:
+            return 0
         else:
-            return [root.val]+self.preorderTraversal(root.left)+self.preorderTraversal(root.right)  
+            return 1+max(self.maxDepth(root.left),self.maxDepth(root.right))
