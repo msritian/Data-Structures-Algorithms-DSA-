@@ -1,21 +1,18 @@
 class Solution:
-    def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
-        ds=[]
-        ans=[]
-        def solve(index,candidates,target,ds,ans):
-            if index>=len(candidates):
+    def combinationSum2(self, candidates: List[int], target: int) -> List[List[int]]:
+        def helper(t,curr,ind):
+            if(t==0):
+                res.append(curr.copy())
                 return
-            if index==len(candidates)-1:
-                if target==0:
-                    ans.append(ds.copy())
-                    return
-            #pick an element
-            if candidates[index]<=target:
-                ds.append(candidates[index])
-                solve(index,candidates,target-candidates[index],ds,ans)
-                ds.pop(-1)
-
-            #not pick
-            solve(index+1,candidates,target,ds,ans)
-        solve(0,candidates,target,ds,ans)
-        return ans
+            for i in range(ind,len(candidates)):
+                if(i>ind and candidates[i]==candidates[i-1]):
+                    continue
+                if(candidates[i]>t):
+                    break
+                curr.append(candidates[i])
+                helper(t-candidates[i],curr,i+1)
+                curr.pop() 
+        candidates.sort()
+        res,curr=[],[]
+        helper(target,curr,0)
+        return res
