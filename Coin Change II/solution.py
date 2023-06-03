@@ -1,10 +1,7 @@
 class Solution:
     def change(self, amount: int, coins: List[int]) -> int:
-        add=0
         target=amount
         nums=coins
-        for i in nums:
-            add+=i
         t=[["" for j in range(target+1)] for i in range(len(nums)+1)]
         for i in range(len(nums)+1):
             for j in range(target+1):
