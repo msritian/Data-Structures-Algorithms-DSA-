@@ -16,7 +16,7 @@ class Solution:
                 if j==0:
                     t[i][j]=1
         for i in range(1,len(nums)+1):
-            for j in range(1,target+1):
+            for j in range(target+1):
                 if nums[i-1]<=j:
                     t[i][j]=t[i-1][j-nums[i-1]]+t[i-1][j]
                 else:
